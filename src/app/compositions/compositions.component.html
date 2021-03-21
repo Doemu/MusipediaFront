@@ -1,0 +1,26 @@
+
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div>   <a *ngFor="let composition of compositions" class="list-group-item list-group-item-action">
+          <i class="fa fa-book"></i>&nbsp;
+          <input [(ngModel)]="composition.name" (change)="updateComposition(composition)" type="text" class="input-label" style="width: 85%"/>
+
+            <button (click)="deleteComposition(composition)" type="submit" class="btn btn-info pull-right">
+              <i class="fa fa-envelope-o"></i>
+              <span>Delete</span>
+           </button>
+
+        </a>
+        </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
