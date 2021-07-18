@@ -23,4 +23,16 @@ export class PerformersComponent implements OnInit {
   updatePerformer(performer: Performer): void {
     this.musipediaService.savePerformer(performer).subscribe(res => {location.reload(); }, err => {alert('holy moly'); });
   }
+
+  deletePerformer(performer: Performer): void {
+    if (confirm('Delete Entity?')) {
+      this.musipediaService.deletePerformer(performer.id).subscribe(
+        res => {
+          const index = this.performers.indexOf(performer);
+          this.performers.splice(index, 1);
+          location.reload(); },
+        err => {alert('ErRoR'); }
+      );
+    }
+  }
 }

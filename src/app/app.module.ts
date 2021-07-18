@@ -10,6 +10,7 @@ import { CompositionsComponent } from './compositions/compositions.component';
 import {FormsModule} from '@angular/forms';
 import { AddEntityComponent } from './add-entity/add-entity.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AddPerformedCompositionComponent } from './add-performed-composition/add-performed-composition.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
     component: AddEntityComponent
   },
   {
+    path: 'addPerformedComposition',
+    component: AddPerformedCompositionComponent
+  },
+  {
     path: '',
     component: MainListComponent
   }
@@ -40,7 +45,8 @@ const appRoutes: Routes = [
     MainListComponent,
     PerformersComponent,
     CompositionsComponent,
-    AddEntityComponent
+    AddEntityComponent,
+    AddPerformedCompositionComponent
   ],
   imports: [
     BrowserModule,

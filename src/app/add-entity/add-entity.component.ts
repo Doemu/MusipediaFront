@@ -20,7 +20,7 @@ export class AddEntityComponent implements OnInit {
   addEntity(): void{
     let url;
     if (this.type === 'Composition') {
-      ;url = 'http://localhost:8080/addComposition'
+      url = 'http://localhost:8080/addComposition';
     }
     else{
       url = 'http://localhost:8080/addPerformer';
@@ -39,9 +39,6 @@ export class AddEntityComponent implements OnInit {
 }
 
 export interface AddEntityModelComponent{
-  name: string;
-}
-export interface PerformerViewModel{
   name: string;
 }
 

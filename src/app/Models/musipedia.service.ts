@@ -4,6 +4,7 @@ import { Composition } from '../Models/composition';
 import {Observable} from 'rxjs';
 import {Performer} from './performer';
 import {PerformedComposition} from './performed-composition';
+import {AddPerformedCompositionModelComponent} from "../add-performed-composition/add-performed-composition.component";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,10 @@ export class MusipediaService {
   private apiPerformedCompositionUrl: string;
   private apiSaveCompositionUrl: string;
   private apiSavePerformerUrl: string;
+  private apiCreatePerformedComposition: string;
   private apiDeleteCompositionUrl: string;
   private apiDeletePerformerUrl: string;
+
 
 
   constructor(private http: HttpClient) {
@@ -29,6 +32,7 @@ export class MusipediaService {
     this.apiSavePerformerUrl = `${this.baseURL}/savePerformer`;
     this.apiDeleteCompositionUrl = `${this.baseURL}/deleteComposition/`;
     this.apiDeletePerformerUrl = `${this.baseURL}/deletePerformer/`;
+    this.apiCreatePerformedComposition = `${this.baseURL}/createPerformedComposition`;
   }
 
   public compositions(): Observable<Composition[]>{
@@ -59,5 +63,9 @@ export class MusipediaService {
   deletePerformer(id: number): Observable<any>
   {
     return this.http.delete(this.apiDeletePerformerUrl + id);
+  }
+
+  public createPerformedComposition(performedComposition: AddPerformedCompositionModelComponent): Observable<PerformedComposition>{
+    return this.http.post<PerformedComposition>(this.apiCreatePerformedComposition, performedComposition);
   }
 }

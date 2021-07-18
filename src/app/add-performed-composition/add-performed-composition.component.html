@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addPerformedComposition()" novalidate class="feedback-form">
+        <!-- Name -->
+
+        <div class="form-group">
+          <label for="PerformerName">Performer</label>
+          <input type="text"
+                 id="PerformerName"
+                 class="form-control"
+                 name="Pname"
+                 placeholder="Name of Performer"
+                 [(ngModel)]="model.performerName"
+                 #Pname="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && Pname.invalid }"
+                 required/>
+          <label for="CompositionName">Composition</label>
+          <input type="text"
+                 id="CompositionName"
+                 class="form-control"
+                 name="Cname"
+                 placeholder="Name of Composition"
+                 [(ngModel)]="model.compositionName"
+                 #Cname="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && Cname.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && (Pname.invalid || Cname.invalid)" class="invalid-input">
+            <!-- individual validation errors -->
+            <br>
+            <div *ngIf="Pname.errors?.required || Cname.errors?.required">Fields are required</div>
+
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-envelope-o"></i>
+          <span> Add</span>
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>
+
