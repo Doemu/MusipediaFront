@@ -20,4 +20,15 @@ export class MainListComponent implements OnInit {
     });
   }
 
+  deletePerformedComposition(performedComposition: PerformedComposition): void {
+    if (confirm('Delete Entity?')) {
+      this.musipediaService.deletePerformedComposition(performedComposition.id).subscribe(
+        res => {
+          const index = this.performedCompositions.indexOf(performedComposition);
+          this.performedCompositions.splice(index, 1);
+          location.reload(); },
+        err => {alert('ErRoR'); }
+      );
+    }
+  }
 }

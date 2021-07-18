@@ -6,6 +6,7 @@
         <!--<th scope="col">Id</th>-->
         <th scope="col">Performer Name</th>
         <th scope="col">Composition Name</th>
+        <th scope="col" width="5px">Function</th>
       </tr>
       </thead>
       <tbody>
@@ -13,6 +14,9 @@
         <!--<td>{{ performedComposition.id }}</td>-->
         <td>{{ performedComposition.performerName }}</td>
         <td>{{ performedComposition.compositionName }}</td>
+        <td style="text-align:center;"><button (click)="deletePerformedComposition(performedComposition)" type="submit" style="text-align:center;" class="btn btn-info pull-right">
+          <div>Delete</div>
+        </button></td>
       </tr>
       </tbody>
     </table>

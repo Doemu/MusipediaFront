@@ -20,6 +20,7 @@ export class MusipediaService {
   private apiCreatePerformedComposition: string;
   private apiDeleteCompositionUrl: string;
   private apiDeletePerformerUrl: string;
+  private apiDeletePerformedCompositionUrl: string;
 
 
 
@@ -33,6 +34,7 @@ export class MusipediaService {
     this.apiDeleteCompositionUrl = `${this.baseURL}/deleteComposition/`;
     this.apiDeletePerformerUrl = `${this.baseURL}/deletePerformer/`;
     this.apiCreatePerformedComposition = `${this.baseURL}/createPerformedComposition`;
+    this.apiDeletePerformedCompositionUrl = `${this.baseURL}/deletePerformedComposition/`;
   }
 
   public compositions(): Observable<Composition[]>{
@@ -67,5 +69,9 @@ export class MusipediaService {
 
   public createPerformedComposition(performedComposition: AddPerformedCompositionModelComponent): Observable<PerformedComposition>{
     return this.http.post<PerformedComposition>(this.apiCreatePerformedComposition, performedComposition);
+  }
+
+  deletePerformedComposition(id: number): Observable<any> {
+    return this.http.delete(this.apiDeletePerformedCompositionUrl + id);
   }
 }
